@@ -5,7 +5,7 @@ import { Auth } from "./auth";
   selector: "app-login",
   template: `<main class="login">
     <section>
-      <span class="brand">APCafeteria</span>
+      <span class="brand">Cafeteria</span>
       <h1>Welcome to your shop</h1>
       <p>Use your secure shop link to open the point of sale.</p>
       <button (click)="signIn()" [disabled]="loading()">

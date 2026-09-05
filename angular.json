@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "projects": {
-    "apcafeteria-shop": {
+    "cafeteria-shop": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -45,10 +45,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "apcafeteria-shop:build:production"
+              "buildTarget": "cafeteria-shop:build:production"
             },
             "development": {
-              "buildTarget": "apcafeteria-shop:build:development"
+              "buildTarget": "cafeteria-shop:build:development"
             }
           },
           "defaultConfiguration": "development"

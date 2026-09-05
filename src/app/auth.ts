@@ -16,7 +16,7 @@ import {
 } from "rxjs";
 
 export const API = "http://127.0.0.1:8000/cafeteria/shop";
-const SESSION_KEY = "apcafeteria.shop.session";
+const SESSION_KEY = "cafeteria.shop.session";
 
 interface ApiResponse<T> {
   success: boolean;

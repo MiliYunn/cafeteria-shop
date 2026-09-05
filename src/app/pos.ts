@@ -10,7 +10,7 @@ import { Icon } from "./icon";
     <aside class="side-nav">
       <div class="brand-mark">
         <span>AP</span>
-        <div><strong>APCafeteria</strong><small>SHOP PORTAL</small></div>
+        <div><strong>Cafeteria</strong><small>SHOP PORTAL</small></div>
       </div>
       <nav>
         <a

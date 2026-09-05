@@ -1,4 +1,4 @@
-# APCafeteria Shop Portal
+# Cafeteria Shop Portal
 
 ## Tech stack
 
