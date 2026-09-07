@@ -9,7 +9,7 @@ import { Icon } from "./icon";
   template: `<div class="pos-shell">
     <aside class="side-nav">
       <div class="brand-mark">
-        <span>AP</span>
+        <span>C</span>
         <div><strong>Cafeteria</strong><small>SHOP PORTAL</small></div>
       </div>
       <nav>
@@ -17,8 +17,9 @@ import { Icon } from "./icon";
           routerLink="/pos"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          ><app-icon name="pos" /><span>New order</span></a
+          ><app-icon name="pos" /><span>New orders</span></a
         >
+        <a routerLink="/pos/orders" routerLinkActive="active"><app-icon name="history" /><span>Order history</span></a>
         <p>MANAGEMENT</p>
         <a routerLink="/pos/menus" routerLinkActive="active"
           ><app-icon name="menu" /><span>Menu</span></a

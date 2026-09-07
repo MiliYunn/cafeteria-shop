@@ -24,7 +24,7 @@ interface Response<T> {
   message: string;
   data: T;
 }
-interface ListResponse extends Response<Entity[]> {
+interface ListResponse<T = Entity> extends Response<T[]> {
   pagination: Pagination;
 }
 export interface UploadResult {
@@ -32,6 +32,39 @@ export interface UploadResult {
   original_filename: string;
   path: string;
   url: string;
+}
+export interface OrderFeeConfiguration {
+  tax_fee: number | string;
+  pickup_service_fee: number | string;
+  delivery_service_fee: number | string;
+}
+export interface ShopOrderItem {
+  id: number;
+  menu_id: number;
+  menu_name: string;
+  quantity: number;
+  amount: number | string;
+}
+export interface ShopOrder {
+  id: number;
+  order_code: string;
+  status: "pending" | "confirmed" | "preparing" | "ready" | "completed" | "cancelled";
+  order_at: string;
+  subtotal_amount: number | string;
+  tax_fee: number | string;
+  service_fee: number | string;
+  total_amount: number | string;
+  is_pickup: boolean;
+  delivery_location?: string | null;
+  remark?: string | null;
+  customer: { id: number; fullname: string; email: string };
+  items: ShopOrderItem[];
+  payment_account?: {
+    account_holder_name: string;
+    account_number: string;
+    payment_method: { name: string; type: string };
+  } | null;
+  status_history?: { id: number; order_id: number; status: string; created_at: string }[];
 }
 
 export function errorMessage(error: unknown): string {
@@ -77,5 +110,21 @@ export class ShopApi {
   }
   updateSettings(payload: { open_at: string | null; close_at: string | null }) {
     return this.http.put<Response<Entity>>(`${API}/settings`, payload);
+  }
+  orderFees() {
+    return this.http.get<Response<OrderFeeConfiguration>>(`${API}/order-fees`);
+  }
+  orders(query: Record<string, string | number> = {}) {
+    let params = new HttpParams();
+    Object.entries(query).forEach(([key, value]) => {
+      if (value !== "") params = params.set(key, String(value));
+    });
+    return this.http.get<ListResponse<ShopOrder>>(`${API}/orders`, { params });
+  }
+  updateOrderStatus(orderId: number, status: ShopOrder["status"]) {
+    return this.http.put<Response<ShopOrder>>(`${API}/orders/${orderId}/status`, { status });
+  }
+  order(orderId: number) {
+    return this.http.get<Response<ShopOrder>>(`${API}/orders/${orderId}`);
   }
 }

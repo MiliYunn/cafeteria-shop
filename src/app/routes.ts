@@ -20,6 +20,14 @@ export const routes: Routes = [
         loadComponent: () => import("./dashboard").then((m) => m.Dashboard),
       },
       {
+        path: "orders",
+        loadComponent: () => import("./order-history").then((m) => m.OrderHistory),
+      },
+      {
+        path: "orders/:id",
+        loadComponent: () => import("./order-detail").then((m) => m.OrderDetail),
+      },
+      {
         path: "menus",
         data: { resource: "menus" },
         loadComponent: () => import("./management").then((m) => m.Management),
